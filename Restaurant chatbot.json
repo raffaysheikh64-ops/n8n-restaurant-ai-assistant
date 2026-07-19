@@ -1,0 +1,114 @@
+{
+  "name": "Restaurant chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "restaurant-chatbot",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -192,
+        16
+      ],
+      "id": "20638f5c-4500-46dd-af3a-4635b0d9411f",
+      "name": "Webhook",
+      "webhookId": "9f06b3bb-a372-4ca8-9fd0-42ea90d174ad"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are a helpful customer support assistant for \"Taste of Lahore\" restaurant in Lahore, Pakistan.\n\nYou help customers with:\n- Menu information (we serve Biryani, Karahi, Nihari, Naan, Lassi)\n- Timings (Open daily 12pm - 12am)\n- Location (Main Boulevard Gulberg, Lahore)\n- Reservations (collect name, date, time, number of guests)\n\nAlways respond in the same language the customer uses (Urdu or English).\nKeep responses short and concise — maximum 2-3 lines.\nIf you don't know something, say: \"Please contact us directly at our restaurant for more details.\""
+            },
+            {
+              "content": "={{ $json.body.message }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        16
+      ],
+      "id": "58f36975-6ddf-4c1c-bcec-a269f9965af6",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "v8F34XobjTFlfAeb",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        304,
+        16
+      ],
+      "id": "4c4826b7-2754-4742-bb06-efefa275ff19",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "4986780d-e18a-4824-8b68-1d3373fc9675",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4d74f6aa6b8730c9b4f4b7acef69e576dc0844569737d0e2745cff97a9eb2631"
+  },
+  "nodeGroups": [],
+  "id": "73aZxnY7NYlr5rae",
+  "tags": []
+}
