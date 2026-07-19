@@ -1,0 +1,18 @@
+# Local environment and secret files
+.env
+*.env
+secrets.json
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Code editor configurations
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
