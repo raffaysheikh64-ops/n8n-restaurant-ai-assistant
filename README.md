@@ -1,10 +1,13 @@
-# 🍔 Database-Free AI Restaurant Assistant (n8n + HTML Frontend)
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ef05073c-3660-4272-a61d-ecb72aa06620" /># 🍔 Database-Free AI Restaurant Assistant (n8n + HTML Frontend)
 
 A lightweight, blazing-fast, and cost-effective AI Customer Support Chatbot built for **"Taste of Lahore"** restaurant. This project utilizes a zero-overhead architecture—meaning it requires **no external database** or complex RAG pipelines. Instead, it leverages highly optimized static prompting and prompt caching via OpenAI to deliver instant, accurate responses at a fraction of a cent.
 
 The chatbot seamlessly handles menu inquiries, hours of operation, location details, and reservation inquiries in both **English and Urdu**.
 
 ---
+## 🛠️ System Architecture Diagram
+
+![n8n Chatbot Workflow Canvas](restaurant-chatbot.png)
 
 ## 🚀 Features
 
