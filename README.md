@@ -5,9 +5,6 @@ A lightweight, blazing-fast, and cost-effective AI Customer Support Chatbot buil
 The chatbot seamlessly handles menu inquiries, hours of operation, location details, and reservation inquiries in both **English and Urdu**.
 
 ---
-## 🛠️ System Architecture Diagram
-
-![n8n Chatbot Workflow Canvas](restaurant-chatbot.png)
 
 ## 🚀 Features
 
